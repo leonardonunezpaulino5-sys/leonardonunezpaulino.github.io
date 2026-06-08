@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Tarjeta de Presentación – Leonardo Núñez Paulino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #e8e4dc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 3rem 1rem;
+      font-family: 'Jost', sans-serif;
+    }
+    .label {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #888; text-align: center; margin-bottom: -1.5rem;
+    }
+
+    /* ── CARD FRONT ── */
+    .card {
+      width: 3.5in; height: 2in;
+      position: relative; overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+    }
+    .card-front {
+      background: #0a1628;
+      width: 100%; height: 100%;
+      display: flex;
+      position: relative; overflow: hidden;
+    }
+    /* Gold accent strip */
+    .card-accent {
+      width: 7px; height: 100%;
+      background: linear-gradient(180deg, #c9a84c 0%, #e2c07a 50%, #c9a84c 100%);
+      flex-shrink: 0;
+    }
+    .card-body {
+      flex: 1; padding: 0.28in 0.22in;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative;
+    }
+    /* Subtle diagonal line */
+    .card-body::before {
+      content: '';
+      position: absolute; top: 0; right: 0.3in;
+      width: 1px; height: 100%;
+      background: rgba(201,168,76,0.1);
+      transform: rotate(-15deg) translateX(0.2in);
+    }
+    .card-top {}
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.36in; font-weight: 700;
+      color: #f8f6f0; line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
+    .card-name span { color: #c9a84c; }
+    .card-title {
+      font-size: 0.085in; letter-spacing: 0.15em; text-transform: uppercase;
+      color: #c9a84c; font-weight: 500; margin-top: 0.04in;
+    }
+    .card-decree {
+      font-size: 0.075in; color: rgba(201,168,76,0.6);
+      letter-spacing: 0.1em; margin-top: 0.02in;
+    }
+    .card-divider {
+      width: 0.35in; height: 1px; background: #c9a84c;
+      margin: 0.07in 0;
+    }
+    .card-bottom {
+      display: flex; flex-direction: column; gap: 0.03in;
+    }
+    .card-contact {
+      font-size: 0.08in; color: #a0a8b8; font-weight: 300;
+      letter-spacing: 0.05em;
+      display: flex; align-items: center; gap: 0.06in;
+    }
+    .card-contact-icon { color: #c9a84c; font-size: 0.09in; }
+    .card-location {
+      font-size: 0.075in; color: rgba(201,168,76,0.5);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-top: 0.03in;
+    }
+
+    /* monogram corner */
+    .card-mono {
+      position: absolute; bottom: 0.1in; right: 0.15in;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.55in; font-weight: 700;
+      color: rgba(201,168,76,0.05);
+      user-select: none; pointer-events: none;
+    }
+
+    /* ── CARD BACK ── */
+    .card-back {
+      background: #0a1628;
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .back-border {
+      position: absolute; inset: 0.12in;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+    .back-inner {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.06in; text-align: center;
+    }
+    .back-corner {
+      position: absolute; width: 0.2in; height: 0.2in;
+      border-color: #c9a84c; border-style: solid;
+    }
+    .back-corner.tl { top: 0.2in; left: 0.2in; border-width: 1px 0 0 1px; }
+    .back-corner.tr { top: 0.2in; right: 0.2in; border-width: 1px 1px 0 0; }
+    .back-corner.bl { bottom: 0.2in; left: 0.2in; border-width: 0 0 1px 1px; }
+    .back-corner.br { bottom: 0.2in; right: 0.2in; border-width: 0 1px 1px 0; }
+    .back-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7in; font-weight: 700; color: #c9a84c;
+      line-height: 1;
+    }
+    .back-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.12in; font-weight: 600;
+      color: #f8f6f0; letter-spacing: 0.08em;
+    }
+    .back-title {
+      font-size: 0.075in; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(201,168,76,0.7); font-weight: 400;
+    }
+    .back-line { width: 0.4in; height: 1px; background: rgba(201,168,76,0.3); }
+    .back-tagline {
+      font-size: 0.07in; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); font-weight: 300;
+    }
+
+    /* PRINT INSTRUCTIONS */
+    .print-note {
+      background: white; border: 1px solid #ddd; border-radius: 4px;
+      padding: 1.2rem 2rem; max-width: 600px; text-align: center;
+      font-size: 0.82rem; color: #555; line-height: 1.7;
+    }
+    .print-note strong { color: #0a1628; display: block; margin-bottom: 0.3rem; font-size: 0.88rem; }
+    .print-btn {
+      margin-top: 0.8rem; display: inline-block;
+      background: #0a1628; color: #c9a84c;
+      padding: 0.6rem 1.8rem; font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      border: none; cursor: pointer; font-weight: 500;
+    }
+
+    @media print {
+      body { background: white; padding: 0; gap: 0; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; }
+      .label, .print-note { display: none; }
+      .card { box-shadow: none; margin: 0; page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<p class="label">Frente de la tarjeta</p>
+
+<!-- FRONT -->
+<div class="card">
+  <div class="card-front">
+    <div class="card-accent"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <div class="card-name">Leonardo<br><span>Núñez Paulino</span></div>
+        <div class="card-title">Contador Público Autorizado · CPA</div>
+        <div class="card-decree">Maestría en Contabilidad Tributaria · Decreto No. 49-10</div>
+        <div class="card-divider"></div>
+      </div>
+      <div class="card-bottom">
+        <div class="card-contact">
+          <span class="card-contact-icon">📱</span>
+          (809) 272-4412
+        </div>
+        <div class="card-contact">
+          <span class="card-contact-icon">✉</span>
+          leonardonunezpaulino5@gmail.com
+        </div>
+        <div class="card-location">Santiago · República Dominicana</div>
+      </div>
+      <div class="card-mono">LNP</div>
+    </div>
+  </div>
+</div>
+
+<p class="label">Reverso de la tarjeta</p>
+
+<!-- BACK -->
+<div class="card">
+  <div class="card-back">
+    <div class="back-border"></div>
+    <div class="back-corner tl"></div>
+    <div class="back-corner tr"></div>
+    <div class="back-corner bl"></div>
+    <div class="back-corner br"></div>
+    <div class="back-inner">
+      <div class="back-monogram">LNP</div>
+      <div class="back-name">Leonardo Núñez Paulino</div>
+      <div class="back-title">Contador Público Autorizado</div>
+      <div class="back-line"></div>
+      <div class="back-tagline">Precisión · Confianza · Resultados</div>
+    </div>
+  </div>
+</div>
+
+<div class="print-note">
+  <strong>📄 Instrucciones de impresión</strong>
+  Abrir en Chrome → Archivo → Imprimir → Sin márgenes → Escala 100%.<br>
+  Tamaño de tarjeta: <strong>3.5 × 2 pulgadas</strong> (estándar internacional).<br>
+  Recomendado: cartulina 300–350 g/m² con acabado brillante o laminado.
+  <br>
+  <button class="print-btn" onclick="window.print()">🖨 Imprimir ahora</button>
+</div>
+
+</body>
+</html>
